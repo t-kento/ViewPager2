@@ -3,11 +3,9 @@ package com.example.viewpager2
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class CustomAdapter(fragmentManager: FragmentManager) :
-    FragmentStateAdapter(FragmentActivity()) {
+class CustomAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     private val fragments: List<Fragment> = listOf(
         Pair(R.drawable.photo1, "心"),

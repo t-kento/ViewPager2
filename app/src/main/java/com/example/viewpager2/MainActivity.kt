@@ -10,12 +10,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        startActivity(Intent(this, ViewPagerActivity::class.java))
     }
 
     companion object {
         fun start(activity: Activity) =
             activity.startActivity(Intent(activity, ViewPagerActivity::class.java))
-
-}
-
+    }
 }

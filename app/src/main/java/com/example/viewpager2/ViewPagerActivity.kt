@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.view_pager_activity.*
 
 class ViewPagerActivity : AppCompatActivity() {
 
-    private val customAdapter by lazy { CustomAdapter(supportFragmentManager) }
+    private val customAdapter by lazy { CustomAdapter(this) }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

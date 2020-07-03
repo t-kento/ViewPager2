@@ -25,10 +25,17 @@ class ChildFragment: BaseFragment() {
 
     private fun initLayout() {
         initText()
+        initImage()
     }
 
     private fun initText() {
-        textView1.text = "${arguments?.getInt(KEY_TEXT)}"
+        textView1.text = arguments?.getString(KEY_TEXT)
+    }
+
+    private fun initImage() {
+        arguments?.getInt(KEY_IMAGE)?.also {
+            ivImage.setImageResource(it)
+        }
     }
 
     companion object {
