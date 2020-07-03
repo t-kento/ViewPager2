@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.view_pager_activity.*
 
@@ -34,7 +36,8 @@ class ViewPagerActivity : AppCompatActivity() {
     private fun initViewPager2() {
         viewPager2.apply {
             adapter = customAdapter
-            OffscreenPageLimit = customAdapter.count
+            offscreenPageLimit = customAdapter.itemCount
+            orientation = ViewPager2.ORIENTATION_VERTICAL
         }
     }
 
@@ -42,8 +45,7 @@ class ViewPagerActivity : AppCompatActivity() {
         tabLayout.setupWithViewPager(viewPager2)
     }
 
-    class CustomAdapter(fragmentManager: FragmentManager) :
-        FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    class CustomAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
         private val fragments: List<Fragment> = listOf(
             Pair(R.drawable.photo1, "心"),
@@ -63,14 +65,20 @@ class ViewPagerActivity : AppCompatActivity() {
                 }
             }
 
-        override fun getCount(): Int = fragments.size
-        override fun getItem(position: Int): Fragment = fragments[position]
-        override fun getPageTitle(position: Int): CharSequence? = "${position}"
+        override fun getItemCount(): Int {
+        }
 
-        val adapter = ViewPagerAdapter()
-        viewPager2.adapter = adapter
+        override fun createFragment(position: Int): Fragment {
+        }
 
-        viewPager2.orientation=ViewPager2.ORIENTATION_VERTICAL
+//        override fun getCount(): Int = fragments.size
+//        override fun getItem(position: Int): Fragment = fragments[position]
+//        override fun getPageTitle(position: Int): CharSequence? = "${position}"
+//
+//        val adapter = ViewPagerAdapter()
+//        viewPager2.adapter = adapter
+//
+//        viewPager2.orientation=ViewPager2.ORIENTATION_VERTICAL
     }
 
 }
