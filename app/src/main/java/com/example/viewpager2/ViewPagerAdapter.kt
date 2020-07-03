@@ -21,7 +21,8 @@ class ViewPagerAdapter (val images:List<ViewPagerItem>):RecyclerView.Adapter<Vie
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
         val currentItem: ViewPagerItem = images[position]
         holder.itemView.ivImage.setImageResource(currentItem.imageR)
-        holder.textView1.text=currentItem.text1
+        //holder.textView1.text=currentItem.text1
+
 
     }
     class ViewPagerHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
